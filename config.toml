@@ -3,3 +3,6 @@ DefaultContentLanguage = "zh-cn"
 languageCode = "zh-cn"
 title = "My New Hugo Site"
 theme = "hugo-theme-learn"
+
+[params]
+editURL = "https://github.com/woolyn/doc.woolyn.net/edit/master/content/"

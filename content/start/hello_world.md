@@ -57,6 +57,8 @@ APP 登录后，按下主界面右下角的浮动按钮，点击“创建自定�
 
 填写完毕后，点击右上角的保存按钮。回到APP主界面，点击“我的小灯”卡片空白处，进入设备主界面，切换到“控制”选项卡，可以看到刚创建的小灯开关。
 
+![设备主界面](/images/start_6.jpg?width=300)
+
 这样，物林平台上的设备就已经完全配置好了。下面，我们开始搭建实际的硬件电路。
 
 ## 搭建电路原型
@@ -126,7 +128,7 @@ const char* mqtt_server = "mqtt.woolyn.net";
 const char* ctrl_topic = "/d/my_light/ctrl";
 const char* mqtt_client_id = "my_light";
 const char* mqtt_username = "my_light";
-const char* mqtt_passwd = "QfTUfL0PQhfs0yY8PIZvE-oyXZXWe5vE";
+const char* mqtt_passwd = "YOUR_MQTT_PASSWORD";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
