@@ -10,4 +10,4 @@ weight = 4
 
 # 数据上报与查询
 
-Lorem ipsum
+一图胜过千数字

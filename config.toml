@@ -6,3 +6,8 @@ theme = "hugo-theme-learn"
 
 [params]
 editURL = "https://github.com/woolyn/doc.woolyn.net/edit/master/content/"
+showVisitedLinks = false
+# Automatically generates prev and next arrows
+autoNav = true
+# Activate search. Don't forget to generate the JSON index file (go check get started page)
+search = false

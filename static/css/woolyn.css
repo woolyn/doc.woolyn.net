@@ -1,0 +1,29 @@
+/* background behind the logo
+#header {
+    background: #009688;
+    border-color: #ffab40;
+}
+*/
+#header-wrapper {
+    background: #009688;
+    color: #fff;
+    text-align: center;
+    border-bottom: 4px solid #ffab40;
+}
+/* Background color of the menu */
+#sidebar {
+    background-color: #2c2a27;
+}
+
+/* Background color of the menu, when clicked */
+#sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
+    background-color: #1b1a18;
+}
+
+/* Color of all links, including arrows to get to previous and next pages */
+a {
+    color: #009688;
+}
+a:hover {
+    color: #037d72;
+}

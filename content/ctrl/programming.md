@@ -1,6 +1,6 @@
 +++
 date = "2017-06-14T23:02:53+08:00"
-title = "编程实现"
+title = "编程实现远程控制"
 toc = true
 weight = 2
 
@@ -9,14 +9,14 @@ weight = 2
 ## 原理
 
 创建控制器后，就可以在客户端进行操作了。
-以拨动开关类型的控制器为例：点击客户端APP中的拨动开关，开关切换为“打开”状态，APP会要求云端服务器向该拨动开关所属设备的控制信道 Topic 发送控制命令，命令格式为：
+以拨动开关类型的控制器为例：点击客户端APP中的拨动开关，开关切换为“打开”状态，APP会要求云端服务器通过控制信道向设备发送控制命令，命令格式为：
  
     控制器变量名=命令值
     
 更具体地说，如果这个拨动开关的变量名是 light, 这时云端服务器会向订阅了这个设备控制信道Topic的硬件发送 `light=on` 这样一个命令。
-再次点击这个拨动开关，云端服务器便会向相应的硬件发送 `light=off` 命令。
+再次点击这个拨动开关，开关变为关闭状态，云端服务器便会向该硬件发送 `light=off` 命令。
 
-当然，硬件设备要想接收到这个命令，就需要我们编写代码来实现了。
+当然，硬件设备要想接收并处理这个命令，就需要我们编写代码来实现了。
 
 ## 接收控制命令
 
@@ -39,7 +39,7 @@ const char* password = "WIFI_PASSWORD";
 
 // 物林MQTT接入参数，参考设备配置修改
 const char* mqtt_server = "mqtt.woolyn.net";
-const char* ctrl_topic = "/d/my_light/ctrl";
+const char* ctrl_topic = "/d/my_light/ctrl"; //控制信道
 const char* mqtt_client_id = "my_light";
 const char* mqtt_username = "my_light";
 const char* mqtt_passwd = "YOUR_MQTT_PASSWORD";
@@ -80,9 +80,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
   
   if(strncmp(msg, "light=", 6) == 0 && length >= 8 ) {
     if(msg[6] == 'o' && msg[7] == 'n') { // 判断收到的消息内容是否为 light=on
-       digitalWrite(LED_PIN, HIGH);
+       digitalWrite(LED_PIN, HIGH); //如果是 'on',则点亮 LED
     } else {
-       digitalWrite(LED_PIN, LOW);
+       digitalWrite(LED_PIN, LOW); //否则就关闭 LED
     }
   }
   
@@ -114,4 +114,6 @@ void loop() {
 ```
 
 
-
+{{% notice info %}}
+完整代码可在 [Github 示例](https://github.com/woolyn/examples/tree/master/my_light) 中查看。
+{{%% /notice}}
